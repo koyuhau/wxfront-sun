@@ -9,7 +9,7 @@
 	"compileType": "weapp",
 	"libVersion": "1.5.4",
 	"appid": "wx81ad6819b892ec7f",
-	"projectname": "dribble",
+	"projectname": "wxfront-sun",
 	"condition": {
 		"weapp": {
 			"current": -1,
