@@ -1,0 +1,32 @@
+{
+  "pages":[
+    "pages/main/main",
+    "pages/category/category",
+    "pages/shots/shots",
+    "pages/designers/designers"
+  ],
+  "window":{
+    "backgroundColor":"#f4f4f4",
+    "navigationBarBackgroundColor": "#333",
+    "navigationBarTitleText": "Dribbble",
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#fff",
+    "borderStyle": "#333",
+    "backgroundColor": "#333",
+    "list": [{
+      "pagePath": "pages/main/main",
+      "text": "Popular",
+      "iconPath": "./images/tabbar-icon-popular-normal.png",
+      "selectedIconPath": "./images/tabbar-icon-popular-active.png"
+    }, {
+      "pagePath": "pages/category/category",
+      "text": "Teams",
+      "iconPath": "./images/tabbar-icon-teams-normal.png",
+      "selectedIconPath": "./images/tabbar-icon-teams-active.png"
+    }]
+  }
+}

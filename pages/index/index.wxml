@@ -1,0 +1,42 @@
+<view class="shot-container {{changeShotStatus ? 'hidden' : ''}}">
+
+  <!-- video 1  -->
+  <view class="shot-img-wrap">
+    <!-- 视频控件 -->
+    <video id="myVideo" class="shot-img" src="{{video_url}}" controls objectFit="fill" poster="http://owgx5je1w.bkt.clouddn.com/17-9-18/94956545.jpg"></video>
+    <!-- 视频控件 end -->
+  </view>
+  <view class="shot-description">
+    <text>这是一个视频，这是一个视频，这是一个视频，这是一个视频。</text>
+  </view>
+  <!-- video 1 end -->
+
+    <!-- video 1  -->
+  <view class="shot-img-wrap">
+    <!-- 视频控件 -->
+    <video id="myVideo" class="shot-img" src="{{video_url}}" controls objectFit="fill" poster="http://owgx5je1w.bkt.clouddn.com/17-9-18/94956545.jpg"></video>
+    <!-- 视频控件 end -->
+  </view>
+  <view class="shot-description">
+    <text>这是一个视频，这是一个视频，这是一个视频，这是一个视频。</text>
+  </view>
+  <!-- video 1 end -->
+
+    <!-- video 1  -->
+  <view class="shot-img-wrap">
+    <!-- 视频控件 -->
+    <video id="myVideo" class="shot-img" src="{{video_url}}" controls objectFit="fill" poster="http://owgx5je1w.bkt.clouddn.com/17-9-18/94956545.jpg"></video>
+    <!-- 视频控件 end -->
+  </view>
+  <view class="shot-description">
+    <text>这是一个视频，这是一个视频，这是一个视频，这是一个视频。</text>
+  </view>
+  <!-- video 1 end -->
+
+
+
+    <block wx:if="{{isShowLoading}}">
+        <include src="../../components/loading.wxml" />
+    </block>
+    
+</view>
