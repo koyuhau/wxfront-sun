@@ -6,6 +6,7 @@ var app = getApp();
 Page({
     data: {
         items: {},
+        title:null,
         comments: [],
         attachments: [],
         multiShots: [],
@@ -16,7 +17,7 @@ Page({
 
     onReady: function() {
         wx.setNavigationBarTitle({
-            title: this.data.shot.title || 'Dribbble'
+            title: this.data.title || 'Dribbble'
         });
     },
 
@@ -37,9 +38,7 @@ Page({
         this.getShot(options.id);
 
         this.setData({
-            author: {
-                id: options.id,
-            },
+            title: options.title,
             shot: options
         })
 

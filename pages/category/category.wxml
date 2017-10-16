@@ -4,9 +4,10 @@
         <!-- each shots -->
         <block wx:for="{{items}}" wx:for-index="idx" wx:key="item.id">
             <navigator 
-                url="../shots/shots?title={{item.title}}&id={{item.id}}&image={{item.images}}&likes_count={{shot.likes_count}}&views_count={{shot.views_count}}&comments_count={{shot.comments_count}}&buckets_count={{shot.buckets_count}}&user_name={{shot.user.name}}&user_id={{shot.user.id}}&attachments_count={{shot.attachments_count}}&created_at={{shot.created_at}}&description={{shot.description}}&user_avatar={{shot.user.avatar_url}}"
+                url="../shots/shots?title={{item.name}}&id={{item.id}}"
                 class="shot"
             >
+                <text class="time">{{item.name}}</text>
                 <include src="../../components/shot.wxml" />
             </navigator>
         </block>

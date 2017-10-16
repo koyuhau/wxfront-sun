@@ -48,7 +48,7 @@ var mCurrentPage = -1;
 function requestData(that, targetPage) {
     wx.request({
         //url: Constant.GET_URL.replace("(/\(\d+))$", targetPage),
-        url: "https://hbvfn8rt.qcloud.la/weapp/demo",
+        url: "https://hbvfn8rt.qcloud.la/weapp/video",
         header: {
             "Content-Type": "application/json"
         },
