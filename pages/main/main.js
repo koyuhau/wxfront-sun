@@ -2,22 +2,14 @@ Page({
     data: {
         items: [],
         hidden: false,
+        start_x:0,
+        start_y:0,
+        start_timpstamp:0
     },
     onLoad: function (options) {
         var that = this;
         requestData(that, mCurrentPage + 1);
     },
-
-    onItemClick: function (event) {
-        var targetUrl = Constant.PAGE_SPECIFIC;
-        if (event.currentTarget.dataset.publishTime != null)
-            targetUrl = targetUrl + "?publishTime=" + event.currentTarget.dataset.publishTime;
-
-        wx.navigateTo({
-            url: targetUrl
-        });
-    },
-
     onPostClick: function (event) {
         console.log("onPostClick");
         wx.navigateTo({
@@ -26,10 +18,60 @@ Page({
     },
     onShareAppMessage: function () {
       return {
-        title: '微信小程序联盟',
-        desc: '最具人气的小程序开发联盟!',
+        title: '三乐学院',
+        desc: '专业的教育视频网站',
         path: '/pages/main/main'
       }
+    },changeExpanded: function(e){
+
+     var id = e.target.id;
+
+     var items = this.data.items ;
+
+     for(var i=0;i<items.length;i++){
+       if(items[i].id==id){
+         if(items[i].isExpanded){
+           items[i].isExpanded = false;
+         }else{
+           items[i].isExpanded = true;
+         }
+         break;
+       }
+     }
+
+     this.setData({
+       items:items
+     });
+  
+    }, handletouchstart: function (event) {
+      this.setData({
+        start_x:event.changedTouches[0].pageX,
+        start_y: event.changedTouches[0].pageY,
+        start_timestamp: event.timeStamp
+      })
+    }, handletouchend:function(e){
+
+      var end_x = e.changedTouches[0].pageX;
+      var end_y = e.changedTouches[0].pageY;
+      var end_timestamp = e.timeStamp ;
+      var start_x = this.data.start_x;
+      var start_y = this.data.start_y;
+      var start_timestamp = this.data.start_timestamp ;
+      
+
+      var delta_x = start_x - end_x ;
+      var delta_y = start_y - end_y ;
+      var delta_time = end_timestamp - start_timestamp;
+    
+      if (delta_y < -30 || delta_y > 30 || delta_time > 300){
+        return ;
+      }
+      if(delta_x > 100){
+        wx.switchTab({
+          url: '../category/category'
+        })
+      }
+
     }
 
     
@@ -47,30 +89,12 @@ var mCurrentPage = -1;
  */
 function requestData(that, targetPage) {
     wx.request({
-        //url: Constant.GET_URL.replace("(/\(\d+))$", targetPage),
-        url: "https://hbvfn8rt.qcloud.la/weapp/video",
+        //url: "https://hbvfn8rt.qcloud.la/weapp/video",
+        url: getApp().globalData.host+"/weapp/video",
         header: {
             "Content-Type": "application/json"
         },
         success: function (res) {
-          console.log(res.data.data.msg);
-            // if (res == null ||
-            //     res.data == null ||
-            //     res.data.results == null ||
-            //     res.data.results.length <= 0) {
-
-            //     console.error(Constant.ERROR_DATA_IS_NULL);
-            //     return;
-            // }
-
-            // var i = 0;
-            // for (; i < res.data.results.length; i++)
-            //     bindData(res.data.results[i]);
-
-            // //将获得的各种数据写入itemList，用于setData
-            // var itemList = [];
-            // for (var i = 0; i < mTitles.length; i++)
-            //     itemList.push({title: mTitles[i], src: mSrcs[i], time: mTimes[i]});
 
             that.setData({
                 items: res.data.data.msg,
@@ -105,5 +129,7 @@ function bindData(itemData) {
     mTimes.push(itemData.publishedAt.split("T")[0]);
     mSrcs.push(src);
 }
+
+
 
 var Constant = require('../../utils/constant.js');

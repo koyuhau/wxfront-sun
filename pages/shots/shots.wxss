@@ -26,6 +26,7 @@
 }
 
 .title {
+    font-weight:bold;
     padding: 14px;
     font-size: 14px;
 }
@@ -42,3 +43,19 @@
     margin: 16px;
     box-shadow: 4px 1px 1px #cccccc;
 }
+
+.expand{
+  padding-left: 14px;
+  font-size: 14px;
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  display:-webkit-box; 
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2; 
+}
+
+.collapse{
+  padding: 14px;
+  font-size: 14px;
+}
+

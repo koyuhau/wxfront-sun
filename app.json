@@ -2,8 +2,7 @@
   "pages":[
     "pages/main/main",
     "pages/category/category",
-    "pages/shots/shots",
-    "pages/designers/designers"
+    "pages/shots/shots"
   ],
   "window":{
     "backgroundColor":"#f4f4f4",

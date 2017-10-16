@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container" bindtouchend="handletouchend" bindtouchstart="handletouchstart">
     <scroll-view style="height: {{windowHeight}}px;" bindscrolltolower="loadMore" lower-threshold="600" scroll-y="true">
 
         <!-- each shots -->

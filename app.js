@@ -25,6 +25,9 @@ App({
     }
   },
   globalData:{
-    userInfo:null
+    userInfo:null,
+    //host:"https://632392289.koyuhau.club"
+    host: "https://hbvfn8rt.qcloud.la"
+    //https://hbvfn8rt.qcloud.la
   }
 })

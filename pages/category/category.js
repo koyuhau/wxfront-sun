@@ -9,6 +9,9 @@ Page({
     isShowLoading: true,
     actionSheetHidden: true,
     items:[],
+    start_x:0,
+    start_y: 0,
+    start_timpstamp: 0,
 
     activeMenu:{
       sort: 'Popular',
@@ -92,22 +95,10 @@ Page({
 
     // send
     request({
-      //url: api.getShots,
-      url:"https://hbvfn8rt.qcloud.la/weapp/category",
+      url: getApp().globalData.host +"/weapp/category",
       data: defaultParams
     }).then((res) => {
-      let datas = [];
-
-      // for (var d of res.data) {
-      //   d.description = filterHtml(d.description);
-      //   d.views_count = addCommas(d.views_count);
-      //   d.likes_count = addCommas(d.likes_count);
-      //   datas.push(d);
-      // }
-      
        self.setData({
-          //pageIndex: pageIndex,
-          //shots: self.data.shots.concat(datas),
           isShowLoading: false,
           items:res.data.data.msg
         })
@@ -135,5 +126,39 @@ Page({
       shots: []
     });
     this.getShots();
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '三乐学院',
+      desc: '专业的教育视频网站',
+      path: '/pages/main/main'
+    }
+  }, handletouchstart: function (event) {
+    this.setData({
+      start_x: event.changedTouches[0].pageX,
+      start_y: event.changedTouches[0].pageY,
+      start_timestamp: event.timeStamp
+    })
+  }, handletouchend:function (e) {
+    var end_x = e.changedTouches[0].pageX;
+    var end_y = e.changedTouches[0].pageY;
+    var end_timestamp = e.timeStamp;
+    var start_x = this.data.start_x;
+    var start_y = this.data.start_y;
+    var start_timestamp = this.data.start_timestamp;
+
+    var delta_x = start_x - end_x;
+    var delta_y = start_y - end_y;
+    var delta_time = end_timestamp - start_timestamp;
+
+    if (delta_y < -30 || delta_y > 30 || delta_time > 300) {
+      return;
+    }
+
+    if (end_x > start_x + 100) {
+      wx.switchTab({
+        url: '../main/main'
+      })
+    }
   }
 })
